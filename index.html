@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Glam Showgirl</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9e5c, #ff5e3c);
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+    }
+
+    /* Glitter de fundo animado */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: repeating-radial-gradient(circle, rgba(255,255,255,0.3) 0px, rgba(255,255,255,0.3) 2px, transparent 2px, transparent 5px);
+      animation: spin 5s linear infinite;
+      top: -50%;
+      left: -50%;
+      z-index: 0;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .calculator {
+      position: relative;
+      background: linear-gradient(145deg, #ff8c42, #ffb366);
+      padding: 30px;
+      border-radius: 25px;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+      z-index: 1;
+      width: 320px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      font-size: 1.5rem;
+      border: none;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      text-align: right;
+      box-shadow: inset 0 0 10px rgba(255,255,255,0.4);
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    button {
