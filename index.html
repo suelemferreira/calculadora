@@ -10,14 +10,15 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: linear-gradient(135deg, #ff9e5c, #ff5e3c);
+      background: linear-gradient(135deg, #ff9e5c, #ff5e3c); /* fundo laranja degradê */
       font-family: 'Arial', sans-serif;
       overflow: hidden;
+      position: relative;
+      margin: 0;
     }
 
-    /* Glitter de fundo animado */
-    body::before {
-      content: "";
+    /* Glitter animado de fundo */
+    .glitter {
       position: absolute;
       width: 200%;
       height: 200%;
@@ -25,7 +26,7 @@
       animation: spin 5s linear infinite;
       top: -50%;
       left: -50%;
-      z-index: 0;
+      z-index: 0; /* atrás da calculadora */
     }
 
     @keyframes spin {
@@ -39,7 +40,7 @@
       padding: 30px;
       border-radius: 25px;
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
-      z-index: 1;
+      z-index: 1; /* na frente do glitter */
       width: 320px;
     }
 
@@ -61,3 +62,81 @@
     }
 
     button {
+      width: 70px;
+      height: 70px;
+      margin: 5px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.3rem;
+      color: white;
+      background: linear-gradient(145deg, #ff9e5c, #ff7a3c);
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+
+    .wide-btn {
+      width: 100%;
+      background: linear-gradient(145deg, #ffa64d, #ff944d);
+    }
+
+  </style>
+</head>
+<body>
+  <div class="glitter"></div> <!-- Glitter atrás da calculadora -->
+
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button onclick="press('7')">7</button>
+      <button onclick="press('8')">8</button>
+      <button onclick="press('9')">9</button>
+      <button onclick="press('/')">÷</button>
+
+      <button onclick="press('4')">4</button>
+      <button onclick="press('5')">5</button>
+      <button onclick="press('6')">6</button>
+      <button onclick="press('*')">×</button>
+
+      <button onclick="press('1')">1</button>
+      <button onclick="press('2')">2</button>
+      <button onclick="press('3')">3</button>
+      <button onclick="press('-')">−</button>
+
+      <button onclick="press('0')">0</button>
+      <button onclick="press('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="press('+')">+</button>
+
+      <button class="wide-btn" onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function press(value) {
+      display.value += value;
+    }
+
+    function calculate() {
+      try {
+        display.value = eval(display.value);
+      } catch {
+        display.value = "Erro";
+      }
+    }
+
+    function clearDisplay() {
+      display.value = "";
+    }
+  </script>
+</body>
+</html>
+
+
